@@ -1,18 +1,32 @@
 let secretNumber = Math.trunc(Math.random() * 20 + 1);
 let score = 20;
 let highscore = 0;
+let displayMessage=(message)=>{
+    document.querySelector('.message').textContent=message
 
-document.querySelector('.score').textContent = score;
+
+}
+let displaynumber=(number)=>{
+    document.querySelector('.number').textContent=number
+
+
+}
+let displayscore=(score)=>{
+    document.querySelector('.score').textContent=score
+
+
+}
+displayscore(score);
 document.querySelector('.highscore').textContent = highscore;
-document.querySelector('.number').textContent = "?";
+displaynumber( "?");
 
 document.querySelector('.check').addEventListener('click', function() {
     let guess = Number(document.querySelector('.guess').value);
     console.log(guess, typeof guess);
 
     if (guess === secretNumber) {
-        document.querySelector('.message').textContent = 'Correct';
-        document.querySelector('.number').textContent = secretNumber;
+        displayMessage('Correct') ;
+        displaynumber(secretNumber) ;
         document.querySelector('body').style.backgroundColor = "green";
     
         
@@ -21,20 +35,20 @@ document.querySelector('.check').addEventListener('click', function() {
             document.querySelector('.highscore').textContent = highscore;
         }
     } else   {
-        guess > secretNumber ? document.querySelector('.message').textContent="too high":document.querySelector('.message').textContent="too low"
+        guess > secretNumber ? displayMessage("too high"):displayMessage("too low")
         score -= 1;
         
     
-        document.querySelector('.score').textContent = score;
+        displayscore(score);
     } 
 });
 
 document.querySelector('.again').addEventListener('click', function() {
     score = 20;
     secretNumber = Math.trunc(Math.random() * 20 + 1);
-    document.querySelector('.score').textContent = score;
-    document.querySelector('.number').textContent = "?";
+    displayscore(score);
+    displaynumber("?") ;
     document.querySelector('.guess').value = '';
-    document.querySelector('.message').textContent = 'Start guessing...';
+    displayMessage( 'Start guessing...');
    
 });
