@@ -44,6 +44,7 @@ document.querySelector('.check').addEventListener('click', function() {
 });
 
 document.querySelector('.again').addEventListener('click', function() {
+    document.querySelector('body').style.backgroundColor = "black";
     score = 20;
     secretNumber = Math.trunc(Math.random() * 20 + 1);
     displayscore(score);
